@@ -1,0 +1,42 @@
+<!DOCTYPE html> 
+<html lang="ko"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=10.0, width=device-width" /> 
+<title>http://192.168.12.168:9091/javascript/fun01.html</title>
+<link rel="shortcut icon" href="../images/star.png" />
+<link href="../css/style.css" rel="Stylesheet" type="text/css"> <!-- /webapp 기준 -->
+
+<script type="text/javascript">
+  function add(su1 ,su2) {
+    // return su1 + su2;
+    // return Number(su1) + Number(su2); // 형변환
+    return parseInt(su1) + parseInt(su2)      // 전역 함수 사용
+    return parseFloat(su1) + parseFloat(su2)  
+  }
+
+  console.log(add(100, 200)); // 함수 호출
+  console.log(add('100', '200'));
+  
+  
+  // JAVA: DecimalFormat
+  // Python: print(format(1500, ','))
+  function comma(su) {
+    // 정수가 4자리이상인 경우 오른쪽기준 숫자 3자리식 분리하여 ','를
+    // 포함하는 정규 표현식
+    return su.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+  
+  console.log(comma(15000000));
+  console.log(comma(12345.12345));
+  
+  
+</script>
+</head> 
+<body>
+ 
+</body>
+ 
+</html>
+
+

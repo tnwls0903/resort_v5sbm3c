@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>File Upload</title>
+</head>
+<body>
+업로드 성공
+<div th:text="${message}"></div>
+<img th:src="@{|http://localhost:9091/file/storage/${fname}|}"><br><br>
+<a href="/file/upload">계속 업로드</a>
+</body>
+</html>
+

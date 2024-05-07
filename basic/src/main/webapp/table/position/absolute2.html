@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>http://localhost:9091/position/absolute1.html</title>
+<style type="text/css">
+  *{font-size: 22px;}
+  #relative {
+    width: 300px;
+    height: 300px;
+    background-color: green;
+    color: #ffffff;
+    position: relative; /* 기본값 */
+    top: 50px;
+    left: 50px;
+  }
+ 
+  #absolute1 {
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+    color: #000000;
+    position: absolute;
+    top: 0px;  /* 부모 태그 기준 상단 0px 기준 ★ */
+    left: 100px;  /* 부모 태그 기준 좌측 0px 기준 ★ */
+  }  
+ 
+  #absolute2 {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    color: #000000;
+    position: absolute;
+    top: 0px;  /* 상단 시작면 0px 기준 ★ */
+    left: 200px;  /* 좌측 시작면 0px 기준 ★ */
+  }    
+</style>
+</head>
+<body>
+  <div id="relative">
+    1. relative
+   
+    <div id="absolute1">
+      2. absolute
+    </div>
+    <div id="absolute2">
+      3. absolute
+    </div>
+  </div>
+</body>
+</html>
+

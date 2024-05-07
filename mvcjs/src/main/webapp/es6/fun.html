@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, width=device-width" /> 
+<title>http://localhost:9091/es6/fun.html</title>
+
+<link rel="shortcut icon" href="../images/star.png" />  <!-- /webapp/images -->
+<link href="/css/style.css" rel="Stylesheet" type="text/css">  <!-- /webapp/css -->
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+  <script>
+      const fun1 = (v1) => {
+        return `지역: ${v1}`;
+      }
+      function function1(v1) {
+        return '지역: ' + v1;
+      }
+      console.log(fun1('부산')); // 함수 객체 생성
+      console.log(function1('여수')); // 함수 == 클래스 선언
+      
+      console.log(fun1('마산')); // 함수 객체 생성
+      console.log(function1('목포')); // 함수 == 클래스 선언
+
+      const fun2 = v1 => {
+        return `지역: ${v1}`;
+      }
+      console.log(fun2('광주'));
+      
+      const fun3 = (v1, v2) => { // () 생략 불가능
+        return `지역: ${v1}, 연봉: ${v2}`;
+      }
+      console.log(fun3('부천', 3200));
+      
+      // 함수를 1행으로 선언시 return 생략 가능
+      const fun4 = (v1, v2) => `지역: ${v1}, 연봉: ${v2}`;
+      console.log(fun3('남양주', 3000));
+      console.log(fun3('파주', 3300));
+      console.log(fun3('양주', 3400));
+      
+      // return 값이 여러개인 경우, 객체 만들어서 return함.
+      const fun5 = (v1, v2) => {
+        return {'season': v1, 'area': v2};
+      }
+      console.log(fun5('겨울', '대관령'));
+      
+      const fun6 = (v1, v2) => ({'season': v1, 'area': v2}); // return 생략
+      console.log(fun6('봄', '한강 공원'));
+      console.log(fun6('봄', '석촌 호수').area);
+      
+      const data1 = {
+        season: '봄',
+        area: '명동'
+      }
+
+      console.log(`계절: ${data1.season}, 지역: ${data1.area}`);
+      
+      // 분할 대입
+      const {season, area} = data1;
+      console.log(`분할 대입 | 계절: ${data1.season} | 지역: ${data1.area}`);
+      
+      const season1 = data1;
+      console.log(`${season1.area}`);
+      const {season2} = data1;
+      console.log(`${season2}`); // null, data1에 season2 없음으로 null이 할당됨.
+      
+      const {tech1, tech2} = ['DA', 'AI']; // 배열 할당(객체 형식)
+      console.log(`tech1: ${tech1}, tech2: ${tech2}`); // X
+      
+      const [tech3, tech4] = ['DA', 'AI']; // 배열 할당(배열 형식)
+      console.log(`tech3: ${tech3}, tech4: ${tech4}`); // O
+      
+      const fun7 = (area='서울') => {
+       console.log(`주거 지역: ${area}`);
+      }
+      fun7();
+      fun7('경기');
+      
+      const fun8 = (mt1 = '관악산', mt2) => {
+        console.log(`${mt1} - ${mt2}`);
+      }
+      fun8();
+      fun8('노고단'); // mt1
+      fun8(mt2 = '남산'); // X, mt2 -> mt1
+      
+      const fun9 = (mt1, mt2 = '관악산') => {
+        console.log(`${mt1} - ${mt2}`);
+      }
+      fun9('북한산'); //mt1, 기본값이 있는 변수는 뒤에 위치 시킬 것.
+          
+  </script>
+</body>
+</html>
+
+

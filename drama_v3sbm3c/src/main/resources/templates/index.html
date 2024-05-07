@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}"> <!-- layout.html 상속 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  
+  <script type="text/JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ 
+  <!-- Fotorama -->
+  <link href="/fotorama/fotorama.css" rel="stylesheet">
+  <script src="/fotorama/fotorama.js"></script>
+</head>
+  
+<body>
+  <div layout:fragment="content" style="width: 80%; margin: 50px auto; text-align: center;">
+    <a class="nav-link" href="/drama/list_search?word=K-이달의 추천"><p style="font-size: 27px; font-weight: bold;">"이달의 추천" 해외 K - 드라마 보러가기</p></a>
+    <div class="fotorama" data-autoplay="5000" data-nav="thumbs" data-ratio="800/520" style="text-align: center;">
+      <img src="/fotorama/images/kbroadcast01.png" style="width: 80%;"> <!-- /static/images/kbroadcast01.png -->
+      <img src="/fotorama/images/kbroadcast02.png" style="width: 80%;"> <!-- /static/images/kbroadcast02.png -->
+      <img src="/fotorama/images/kbroadcast03.png" style="width: 80%;"> <!-- /static/images/kbroadcast03.png -->
+    </div>
+   
+    <a class="nav-link" href="/drama/list_search?word=G-이달의 추천"><p style="font-size: 27px; font-weight: bold; margin-top: 20px;">"이달의 추천" 해외 G - 드라마 보러가기</p></a>
+    <div class="fotorama" data-autoplay="5000" data-nav="thumbs" data-ratio="800/520" style="text-align: center;">
+      <img src="/fotorama/images/gbroadcast01.png" style="width: 80%;"> <!-- /static/images/gbroadcast01.png -->
+      <img src="/fotorama/images/gbroadcast02.png" style="width: 80%;"> <!-- /static/images/gbroadcast02.png -->
+    </div>
+  
+</body>
+  
+</html>

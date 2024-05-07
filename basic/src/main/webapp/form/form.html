@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=10.0, width=device-width">
+  <title>http://localhost:9091/</title>
+ <style type="text/css">
+   *{ font-family: Malgun Gothic; font-size: 22px;}
+ </style>
+</head>
+<body>
+  <!-- <form name="frm" action="http://192.168.12.168:9091/form/proc.jsp" method="get"> -->
+  <form name="frm" action="./proc.jsp" method="get">
+    <h3>뉴스 등록</h3>
+    제목<br>
+    <input type="text" name="title" value="인공지능 인력 양성 어려워!"
+           style="width: 90%;" autofocus="autofocus"></input><br>
+    내용<br>
+    <textarea name="content" style="width: 90%; height: 200px">
+1. 데이터 분석 능력 필요
+2. 선형대수, 선형회귀등의 지식
+3. 모델 제작 능력
+4. UI 제작 능력
+5. 시각화 능력
+    </textarea><br>
+    기부<br>
+    <input type="number" name="donate" min="1000" max="1000000" step="100"
+           value="1000" style="width: 20%;"><br>
+    패스워드<br>
+    <input type="password" name="passwd" value="123" style="width: 20%;"><br>
+    <button type="submit">등록</button>
+  </form>
+</body>
+</html>
+
+
+
+
+

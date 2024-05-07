@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=10.0, width=device-width">
+  <title>http://localhost:9091/form/radio_form.html</title>
+ <style type="text/css">
+   *{ font-family: Malgun Gothic; font-size: 22px;}
+ </style>
+</head>
+<body>
+  <h2>축제 예약</h2>
+  <form name="frm" action="./radio_proc.jsp" method="get">
+    축제:
+    <label style="cursor: pointer">
+      <input type="radio" name="festival" value="화천 산천어 축제" checked="checked">화천 산천어 축제
+    </label> 
+    <label style="cursor: pointer">
+      <input type="radio" name="festival" value="평창 송어 축제" checked="checked">평창 송어 축제
+    </label>     
+    <label style="cursor: pointer">
+      <input type="radio" name="festival" value="태백산 눈 축제" checked="checked">태백산 눈 축제
+    </label>
+    <br>
+    참가 인원: <input type="number" name="count" min="1" max="1000" step="1" value="2" style="width: 10%;">명<br>
+    통신사: 
+    <label style="cursor: pointer">
+      <input type="radio" name="mobile" value="SKT">SKT
+    </label>
+    <label style="cursor: pointer">
+      <input type="radio" name="mobile" value="KT">KT
+    </label>
+    <label style="cursor: pointer">
+      <input type="radio" name="mobile" value="LGU+">LGU+
+    </label>
+    <label style="cursor: pointer">
+      <input type="radio" name="mobile" value="알뜰폰" checked="checked">알뜰폰
+    </label>
+    <br>
+    전화 번호: <input type="text" name="mobileno" value="010-1111-2222">
+    <br><br>
+    <button type="submit">예약</button>
+  </form>
+</body>
+</html>

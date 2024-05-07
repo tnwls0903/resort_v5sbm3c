@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}"> <!-- layout.html 상속 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  
+  <script type="text/JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ 
+  <!-- Fotorama -->
+  <link href="/fotorama/fotorama.css" rel="stylesheet">
+  <script src="/fotorama/fotorama.js"></script>
+</head>
+  
+<body>
+  <div layout:fragment="content" style="width: 80%; margin: 50px auto; text-align: center;">
+    <a class="nav-link" href="/drama/list_search?word=서울"><p style="font-size: 27px; font-weight: bold;">"서울" 유명 장소 보러가기</p></a>
+    <div class="fotorama" data-autoplay="5000" data-nav="thumbs" data-ratio="800/520" style="text-align: center;">
+      <img src="/fotorama/images/k1.jpg" style="width: 80%;"> <!-- /static/images/k1.png -->
+      <img src="/fotorama/images/k2.jpg" style="width: 80%;"> <!-- /static/images/kbroadcast02.png -->
+    </div>
+   
+    <a class="nav-link" href="/drama/list_search?word=경기도"><p style="font-size: 27px; font-weight: bold; margin-top: 20px;">"경기도"  유명 장소 보러가기</p></a>
+    <div class="fotorama" data-autoplay="5000" data-nav="thumbs" data-ratio="800/520" style="text-align: center;">
+      <img src="/fotorama/images/g1.jpg" style="width: 80%;"> <!-- /static/images/gbroadcast01.png -->
+      <img src="/fotorama/images/g1.jpg" style="width: 80%;"> <!-- /static/images/gbroadcast02.png -->
+    </div>
+  
+</body>
+  
+</html>

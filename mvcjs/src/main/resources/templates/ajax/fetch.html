@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, width=device-width" /> 
+<title>http://localhost:9091/ajax/fetch.html</title>
+
+<link rel="shortcut icon" href="../images/star.png" />  <!-- /webapp/images -->
+<link href="/css/style.css" rel="Stylesheet" type="text/css">  <!-- /webapp/css -->
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  window.onload = function() {
+    // object1(); // 하나의 객체 읽기
+    // array1(); // 하나의 배열 읽기
+    array2(); // 객체 배열 읽기
+  }
+  
+  function array2() {
+    let panel2 = document.getElementById('panel2');
+    
+    const url = '/ajax/fetch_array2';
+    
+    // 비동기 통신: 서버가 접속이 안되도, 즉시 에러가 발생하지 않고, 요청을 재시도함으로, 서버에
+    // 순간적으로 부하가 발생해도 접속 에러가 발생하지 않음.
+    fetch(url, {
+      method: 'GET', // GET, POST
+      // headers: {
+      //   'Content-Type': 'application/json' // JSON 형식으로 데이터 전송을 알림
+      // },
+      // body: JSON.stringify(dataToSend) // JSON 데이터를 문자열로 변환하여 요청 본문에 포함
+    })
+    .then((response) => response.json()) // response.json(), response.text()
+    .then((rdata) => {
+      // alert(rdata.name);
+      let tags = ' ';
+      tags += '<ul style="padding-left: 30px;">';
+      
+      for(let i=0; i < rdata.length; i++) {
+        let object = rdata[i];
+        tags += '<li>';
+        tags += 'no: ' + object.no + '<br>';
+        tags += 'name: ' + object.name + '<br>';
+        tags += 'price: ' + object.price + '<br>';
+        tags += 'grade: ' + object.grade + '<br>';
+        tags += '</li>';
+      }
+      
+      tags += '</ul>';
+      
+      panel2.innerHTML = tags;
+      panel2.style.textAlign = 'left';
+      panel2.style.width = '200px';
+    })
+    .catch(error => {
+      panel2.innerHTML = error;
+    });
+    
+    panel2.style.display = ''; // 태그 출력
+    // panel2.innerHTML = '처리중입니다...';
+    panel2.innerHTML="<img src='/images/progress.gif' style='width: 10%;'>";
+    panel2.style.textAlign = 'center';
+  }
+  
+  function array1() {
+    let panel2 = document.getElementById('panel2');
+    
+    const url = '/ajax/fetch_array';
+    
+    // 비동기 통신: 서버가 접속이 안되도, 즉시 에러가 발생하지 않고, 요청을 재시도함으로, 서버에
+    // 순간적으로 부하가 발생해도 접속 에러가 발생하지 않음.
+    fetch(url, {
+      method: 'GET', // GET, POST
+      // headers: {
+      //   'Content-Type': 'application/json' // JSON 형식으로 데이터 전송을 알림
+      // },
+      // body: JSON.stringify(dataToSend) // JSON 데이터를 문자열로 변환하여 요청 본문에 포함
+    })
+    .then((response) => response.json()) // response.json(), response.text()
+    .then((rdata) => {
+      // alert(rdata.name);
+      let tags = '추천 차종: ';
+      
+      for(let i=0; i < rdata.length; i++) {
+        tags += rdata[i];
+        if (i < rdata.length-1) { // 마지막 이전 요소 출력시만 구분자 추가
+          tags  = tags + ", ";
+        }
+      }
+      
+      panel2.innerHTML = tags;
+      panel2.style.textAlign = 'center';
+    })
+    .catch(error => {
+      panel2.innerHTML = error;
+    });
+    
+    panel2.style.display = ''; // 태그 출력
+    // panel2.innerHTML = '처리중입니다...';
+    panel2.innerHTML="<img src='/images/progress.gif' style='width: 10%;'>";
+    panel2.style.textAlign = 'center';
+  }
+
+  function object1() {
+    let panel2 = document.getElementById('panel2');
+    
+    const url = '/ajax/fetch_object';
+    
+    // 비동기 통신: 서버가 접속이 안되도, 즉시 에러가 발생하지 않고, 요청을 재시도함으로, 서버에
+    // 순간적으로 부하가 발생해도 접속 에러가 발생하지 않음.
+    fetch(url, {
+      method: 'GET', // GET, POST
+      // headers: {
+      //   'Content-Type': 'application/json' // JSON 형식으로 데이터 전송을 알림
+      // },
+      // body: JSON.stringify(dataToSend) // JSON 데이터를 문자열로 변환하여 요청 본문에 포함
+    })
+    .then((response) => response.json()) // response.json(), response.text()
+    .then((rdata) => {
+      // alert(rdata.name);
+      let tags = '';
+      tags += '<ul style="padding-left: 30px;">';
+      tags += '  <li>no: ' + rdata.no + '</li>';
+      tags += '  <li>name: ' + rdata.name + '</li>';
+      tags += '  <li>price: ' + rdata.price + '</li>';
+      tags += '  <li>grade: ' + rdata.grade + '</li>';
+      tags += '</ul>';
+      
+      panel2.innerHTML = tags;
+      panel2.style.textAlign = 'left';
+    })
+    .catch(error => {
+      panel2.innerHTML = error;
+    });
+    
+    panel2.style.display = ''; // 태그 출력
+    // panel2.innerHTML = '처리중입니다...';
+    panel2.innerHTML="<img src='/images/progress.gif' style='width: 10%;'>";
+    panel2.style.textAlign = 'center';
+  }
+</script>
+</head> 
+<body>
+  <DIV id='panel1' style='margin: 10px auto; padding: 10px; border: solid 1px #00AA00; width: 50%; text-align: center;'>
+    Ajax + JSON library + Fetch test   
+  </DIV>
+  <DIV id='panel2' style='display: none; margin: 10px auto; padding: 10px; border: solid 1px #00AA00; width: 50%;'>
+  </DIV>
+</body>
+ 
+</html>

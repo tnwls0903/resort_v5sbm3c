@@ -1,0 +1,53 @@
+<div th:fragment="list_all_fragment"> <!-- <div th:replace=... -->
+  <table class="table table-hover">
+    <colgroup>
+      <col style='width: 9%;'/>
+      <col style='width: 19%;'/>
+      <col style='width: 19%;'/>
+      <col style='width: 10%;'/>    
+      <col style='width: 15%;'/>
+      <col style='width: 10%;'/>
+      <col style='width: 18%;'/>
+    </colgroup>
+    <thead>
+      <tr>
+        <th class="th_bs">번호</th>
+        <th class="th_bs">중분류</th>
+        <th class="th_bs">소분류</th>
+        <th class="th_bs">자료수</th>
+        <th class="th_bs">등록일</th>
+        <th class="th_bs">순서</th>
+        <th class="th_bs">기타</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="dramaVO, status:${list}">
+        <td class="td_bs" th:text="|${no - status.index}|"></td>
+        <td class="td_bs"><a th:href="@{|/drama/read/${dramaVO.dramano}?word=${word}&now_page=${now_page}|}" style="display: block;" th:text="${dramaVO.nation}"></a></td>
+        <td class="td_bs"><a th:href="@{|/drama/read/${dramaVO.dramano}?word=${word}&now_page=${now_page}|}" style="display: block;" th:text="${dramaVO.genre}"></a></td>
+        <td class="td_bs" th:text="${dramaVO.cnt}"></td>
+        <td class="td_bs" th:text="${dramaVO.rdate.substring(0, 10)}"></td>
+        <td class="td_bs" th:text="${dramaVO.seqno}"></td>
+        <td class="td_bs">
+          <span th:if="${dramaVO.visible == 'Y'}">
+            <a th:href="@{|/drama/update_visible_n/${dramaVO.dramano}?word=${word}&now_page=${now_page}|}"><img src="/drama/images/pon.png" title="출력"></a> <!-- /static/drama/images/show.png -->
+          </span>
+          <span th:unless="${dramaVO.visible == 'Y'}">
+            <a th:href="@{|/drama/update_visible_y/${dramaVO.dramano}?word=${word}&now_page=${now_page}|}"><img src="/drama/images/poff.png" title="숨김"></a> <!-- /static/drama/images/hide.png -->
+          </span>          
+          <a th:href="@{|/drama/update_seqno_forward/${dramaVO.dramano}?word=${word}&now_page=${now_page}|}"><img src="/drama/images/up.png" class="icon" title="UP"></a>
+          <a th:href="@{|/drama/update_seqno_backward/${dramaVO.dramano}?word=${word}&now_page=${now_page}|}"><img src="/drama/images/down.png" class="icon" title="DOWN"></a>
+          <a th:href="@{|/drama/update/${dramaVO.dramano}?word=${word}&now_page=${now_page}|}"><img src="/drama/images/pen.png" class="icon" title="수정"></a>
+          <a th:href="@{|/drama/delete/${dramaVO.dramano}?word=${word}&now_page=${now_page}|}"><img src="/drama/images/del.png" class="icon" title="삭제"></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <!-- 페이지 버튼 목록 출력 시작 -->
+  <div class="Bottom_menu" th:utext="${paging}"></div>
+  <!-- 페이지 버튼 목록 출력 종료 --> 
+  
+</div>
+
+

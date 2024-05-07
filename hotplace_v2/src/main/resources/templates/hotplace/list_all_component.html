@@ -1,0 +1,53 @@
+<div th:fragment="list_all_fragment"> <!-- <div th:replace=... -->
+  <table class="table table-hover">
+    <colgroup>
+      <col style='width: 9%;'/>
+      <col style='width: 19%;'/>
+      <col style='width: 19%;'/>
+      <col style='width: 10%;'/>    
+      <col style='width: 15%;'/>
+      <col style='width: 10%;'/>
+      <col style='width: 18%;'/>
+    </colgroup>
+    <thead>
+      <tr>
+        <th class="th_bs">번호</th>
+        <th class="th_bs">중분류</th>
+        <th class="th_bs">소분류</th>
+        <th class="th_bs">자료수</th>
+        <th class="th_bs">등록일</th>
+        <th class="th_bs">순서</th>
+        <th class="th_bs">기타</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="hotplaceVO, status:${list}">
+        <td class="td_bs" th:text="|${no - status.index}|"></td>
+        <td class="td_bs"><a th:href="@{|/hotplace/read/${hotplaceVO.hotplaceno}?word=${word}&now_page=${now_page}|}" style="display: block;" th:text="${hotplaceVO.a}"></a></td>
+        <td class="td_bs"><a th:href="@{|/hotplace/read/${hotplaceVO.hotplaceno}?word=${word}&now_page=${now_page}|}" style="display: block;" th:text="${hotplaceVO.b}"></a></td>
+        <td class="td_bs" th:text="${hotplaceVO.cnt}"></td>
+        <td class="td_bs" th:text="${hotplaceVO.rdate.substring(0, 10)}"></td>
+        <td class="td_bs" th:text="${hotplaceVO.seqno}"></td>
+        <td class="td_bs">
+          <span th:if="${hotplaceVO.visible == 'Y'}">
+            <a th:href="@{|/hotplace/update_visible_n/${hotplaceVO.hotplaceno}?word=${word}&now_page=${now_page}|}"><img src="/hotplace/images/pon.png" title="출력"></a> <!-- /static/hotplace/images/show.png -->
+          </span>
+          <span th:unless="${hotplaceVO.visible == 'Y'}">
+            <a th:href="@{|/hotplace/update_visible_y/${hotplaceVO.hotplaceno}?word=${word}&now_page=${now_page}|}"><img src="/hotplace/images/poff.png" title="숨김"></a> <!-- /static/hotplace/images/hide.png -->
+          </span>          
+          <a th:href="@{|/hotplace/update_seqno_forward/${hotplaceVO.hotplaceno}?word=${word}&now_page=${now_page}|}"><img src="/hotplace/images/up.png" class="icon" title="UP"></a>
+          <a th:href="@{|/hotplace/update_seqno_backward/${hotplaceVO.hotplaceno}?word=${word}&now_page=${now_page}|}"><img src="/hotplace/images/down.png" class="icon" title="DOWN"></a>
+          <a th:href="@{|/hotplace/update/${hotplaceVO.hotplaceno}?word=${word}&now_page=${now_page}|}"><img src="/hotplace/images/pen.png" class="icon" title="수정"></a>
+          <a th:href="@{|/hotplace/delete/${hotplaceVO.hotplaceno}?word=${word}&now_page=${now_page}|}"><img src="/hotplace/images/del.png" class="icon" title="삭제"></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <!-- 페이지 버튼 목록 출력 시작 -->
+  <div class="Bottom_menu" th:utext="${paging}"></div>
+  <!-- 페이지 버튼 목록 출력 종료 --> 
+  
+</div>
+
+

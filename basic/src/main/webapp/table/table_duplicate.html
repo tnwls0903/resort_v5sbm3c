@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>http://localhost:9091/table/table_duplicate.html</title>
+<style type="text/css">
+  *{ font-family: Malgun Gothic; font-size: 22px;}
+  table {
+    border: solid 1px #000000;  /* 테이블 외곽선 지정 */
+    border-collapse: collapse;   /* cell 경계선 결합 */
+    width: 80%;
+    margin: 30px auto;
+  }
+  
+  th {
+    border: solid 1px #000000;  /* 외곽선 지정 */
+  }
+ 
+  td {
+    border: solid 1px #000000;  /* 외곽선 지정 */
+    text-align: center;
+  }
+  
+  .td_center {
+    text-align: center;
+  } 
+</style>
+</head>
+<body>
+<TABLE>
+  <TR><TD rowspan="11">4IR</TD><TD>IOT</TD><TD>Mobile</TD></TR>
+  <TR><!-- <TD></TD> --><TD rowspan="4">데이터 분석</TD><TD>R</TD></TR>
+  <TR><!-- <TD></TD> --><!-- <TD></TD> -->
+    <TD>
+      <TABLE>
+        <caption>Python</caption>
+        <TR><TD>Numpy</TD></TR>
+        <TR><TD>Pandas</TD></TR>
+        <TR><TD>Matplotlib</TD></TR>
+      </TABLE>
+    </TD>
+  </TR>
+  <TR><!-- <TD></TD> --><!-- <TD></TD> -->
+    <TD>
+      <TABLE>
+        <caption>통계</caption>
+        <TR><TD>기술 통계</TD></TR>
+        <TR><TD>추론 통계</TD></TR>
+      </TABLE>
+    </TD>
+  </TR>
+  <TR><!-- <TD></TD> --><!-- <TD></TD> --><TD>SQL</TD></TR>
+  <TR><!-- <TD></TD> --><TD rowspan="6"> AI</TD><TD>Tensorflow</TD></TR>
+  <TR><!-- <TD></TD> --><!-- <TD></TD> --><TD>AI 수학</TD></TR>
+  <TR><!-- <TD></TD> --><!-- <TD></TD> --><TD>NLP</TD></TR>
+  <TR><!-- <TD></TD> --><!-- <TD></TD> --><TD>Recommendation</TD></TR>
+  <TR><!-- <TD></TD> --><!-- <TD></TD> --><TD>CNN/RNN/DQN</TD></TR>
+  <TR><!-- <TD></TD> --><!-- <TD></TD> --><TD>Reinforcement</TD></TR>
+</TABLE>
+</body>
+</html>
+

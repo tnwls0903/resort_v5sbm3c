@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, width=device-width" /> 
+<title>http://localhost:9091/es6/ES6.html</title>
+
+<link rel="shortcut icon" href="../images/star.png" />  <!-- /webapp/images -->
+<link href="/css/style.css" rel="Stylesheet" type="text/css">  <!-- /webapp/css -->
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  const const1 = '서울'; // const: 상수(값이 변하지 않음, 값 할당 X)
+  console.log(const1);
+  
+  // const1 = '인천'; // X
+  
+  const const2 = {'name': '왕눈이',
+                       'age': 27, 
+                       'address': 'korea'}; // javascript의 객체 표기법, JSON: Javascript Object Noation                   
+  console.log(const2);
+  console.log(const2.name);
+  const2.name = '이로미';
+  console.log(const2.name); // 요소(객체)는 값 할당 가능
+  
+  // X, 객체의 요소는 할당 가능하나 객체 할당하는 것은 안됨.
+  // const const2 = {'name': 'Colin',
+  //                    'age': 30, 
+  //                    'address': '한국'}; // javascript의 객체 표기법, JSON: Javascript Object Noation
+  // console.log(const2); 
+  
+  const name = '아로미';
+  const area = '경기도';
+  let msg = '성명: ' + name + ', 근무 지역: ' + area;
+  console.log(msg); 
+  
+  msg = '성명: ${name}, 근무 지역: ${area}';
+  console.log(msg);
+  
+  // 템플릿 문자열: 역따옴표(백쿼트)
+  msg =`성명: ${name}, 근무 지역: ${area}`;
+  console.log(msg);
+  
+  
+  // 템플릿 문자열: 함수호출, 사칙연산 가능
+  function getArea() {
+    return '강원도';
+  }
+  let sale = 1000;
+  msg = `판매 지역: ${getArea()}, 판매량: ${sale * 3}`;
+  console.log(msg); 
+     
+</script>
+
+</head>
+<body>
+
+</body>
+</html>
+
+

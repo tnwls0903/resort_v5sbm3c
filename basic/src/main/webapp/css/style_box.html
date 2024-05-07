@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=10.0, width=device-width">
+  <title>http://localhost:9091/css/style_box.html</title>
+  <style type="text/css">
+    *{ font-family: Malgun Gothic; font-size: 22px;}
+    
+     .display_table {
+      color: #FFFFFF; 
+      background-color: #FF0000; 
+      width: 50%;
+      height: 150px; 
+      margin: 20px auto; 
+      text-align: center;
+      padding: 2px; 
+      display: table;
+    }
+    
+    .display_table_cell {
+      color: #000000; 
+      background-color: #FFFF00; 
+      display: table-cell; 
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <div style="background-color: #FF0000; color: #FFFFFF;">
+    JAVA 1)<br>
+    HTML5<br>
+    CSS3
+  </div>
+  <br>
+  <div style="background-color: #FF0000; color: #FFFFFF; width: 500px;">
+    JAVA 2)<br>
+    HTML5<br>
+    CSS3
+  </div>
+  <br>
+  <div style="background-color: #FF0000; color: #FFFFFF; width: 50%;">
+    JAVA 3)<br>
+    HTML5<br>
+    CSS3
+  </div>
+  <br> <!-- height는 50% 효과 없음 -->
+  <div style="background-color: #FF0000; color: #FFFFFF; width: 50%; height: 50%;">
+    JAVA 4)<br>
+    HTML5<br>
+    CSS3
+  </div> 
+  <br>
+  <div style="background-color: #00AA00; color: #FFFFFF; width: 50%; height: 200px;">
+    JAVA 5)<br>
+    HTML5<br>
+    CSS3
+  </div> 
+  <br><!-- margin: top/bottom left/right;-->
+  <div style="background-color: #0000AA; color: #FFFFFF; width: 50%; 
+             height: 150px; margin: 20px auto; text-align: center;">
+    JAVA 6)<br>
+    HTML5<br>
+    CSS3
+  </div>
+  <br><!-- 수직 중앙 정렬이 안됨 -->
+  <div style="background-color: #0000AA; color: #FFFFFF; width: 50%; 
+              height: 150px; margin: 20px auto; text-align: center; vertical-align: middle;">
+    JAVA 7)<br>
+    HTML5<br>
+    CSS3
+  </div> 
+  <br><!-- padding-top: top/right/bottom/left -->  
+  <div style="background-color: #0000AA; color: #FFFFFF; width: 50%; 
+      height: 150px; margin: 20px auto; text-align: center; padding-top: 50px;">
+    JAVA 8)<br>
+    HTML5<br>
+    CSS3
+  </div> 
+  <!-- 부모 DIV: display: table;  자식 DIV:  display: table-cell; vertical-align: middle; -->
+  <DIV style="color: #FFFFFF; background-color: #FF0000; width: 50%;
+              height: 150px; margin: 20px auto; text-align: center;
+              padding: 2px; display: table;">
+    <DIV style="color: #000000; background-color: #FFFF00; 
+                vertical-align: middle; display: table-cell;">
+      JAVA 9)<br>
+      HTML5<br>
+      CSS3
+    </DIV>
+  </DIV>
+  <br>
+  <br>
+  <DIV class="display_table">
+    <DIV class="display_table_cell">
+      데이터 분석 10)<br>
+      머신러닝<br>
+      캐글<br>
+      딥러닝
+    </DIV>
+  </DIV>
+  <br>
+  <DIV class="display_table" style="background-color: #00AA00;">
+    <DIV class="display_table_cell" style="background-color: #00FF00;">
+      데이터 분석 11)<br>
+      머신러닝<br>
+      캐글<br>
+      딥러닝
+    </DIV>
+  </DIV>  
+</body>
+</html>

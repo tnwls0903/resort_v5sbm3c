@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.mvc.hotplace.HotplaceDAOInter"> <!-- SB가 자동으로 구현하여 연동하는 interface -->
+  <insert id="create" parameterType="dev.mvc.hotplace.HotplaceVO"> <!-- public int create(hotplaceVO hotplaceVO) {...-->
+    INSERT INTO hotplace(hotplaceno, a, b, cnt, rdate, seqno, visible)
+    VALUES(hotplace_SEQ.nextval, #{a}, #{b}, 0, sysdate, #{seqno}, 'Y')
+  </insert>
+  
+  <!-- SQL -> hotplaceVO -> ArrayList<hotplaceVO> return -->
+  <select id="list_all" resultType="dev.mvc.hotplace.HotplaceVO">
+    SELECT hotplaceno, a, b, cnt, rdate, seqno, visible
+    FROM hotplace
+    ORDER BY seqno ASC
+  </select>
+
+  <!-- SQL -> hotplaceVO return -->
+  <select id="read" resultType="dev.mvc.hotplace.HotplaceVO" parameterType="Integer">
+    SELECT hotplaceno, a, b, cnt, rdate, seqno, visible
+    FROM hotplace
+    WHERE hotplaceno=#{hotplaceno}
+  </select>
+  
+  <!-- 수정, return: 수정한 레코드 갯수, parameterType: 수정할 레코드 정보 -->
+  <update id="update" parameterType="dev.mvc.hotplace.HotplaceVO">
+    UPDATE hotplace
+    SET a=#{a}, b=#{b}, cnt=#{cnt}, rdate=sysdate, seqno=#{seqno}, visible=#{visible}
+    WHERE hotplaceno=#{hotplaceno}
+  </update>
+  
+  <delete id="delete" parameterType="Integer">
+    DELETE FROM hotplace WHERE hotplaceno=#{hotplaceno}
+  </delete>
+
+  <!-- 우선 순위 높임, 10 등 -> 1 등 -->
+  <update id="update_seqno_forward" parameterType="Integer">
+    UPDATE hotplace
+    SET seqno= seqno -1
+    WHERE hotplaceno = #{hotplaceno}
+  </update>
+
+  <!-- 우선 순위 낮춤, 1 등 -> 10 등 -->
+  <update id="update_seqno_backward" parameterType="Integer">
+    UPDATE hotplace
+    SET seqno= seqno +1
+    WHERE hotplaceno = #{hotplaceno}
+  </update>
+
+  <!-- 카테고리 공개 설정 -->
+  <update id="update_visible_y" parameterType="Integer">
+    UPDATE hotplace SET visible='Y' WHERE hotplaceno=#{hotplaceno}
+  </update>
+  
+  <!-- 카테고리 비공개 설정 -->
+  <update id="update_visible_n" parameterType="Integer">
+    UPDATE hotplace SET visible='N' WHERE hotplaceno=#{hotplaceno}
+  </update>
+
+  <!-- 회원/비회원에게 공개할 중분류 목록 -->
+  <!-- SQL -> HotplaceVO -> ArrayList<HotplaceVO> return -->
+  <select id="list_all_a_y" resultType="dev.mvc.hotplace.HotplaceVO">
+    SELECT hotplaceno, a, b, visible
+    FROM hotplace 
+    WHERE a IN (
+        SELECT DISTINCT a
+        FROM hotplace
+    ) AND b = '-' AND visible='Y'
+    ORDER BY seqno ASC
+  </select>
+
+  <!-- 회원/비회원에게 공개할 소분류 목록 -->
+  <!-- SQL -> hotplaceVO -> ArrayList<hotplaceVO> return -->
+  <select id="list_all_b_y" resultType="dev.mvc.hotplace.HotplaceVO" parameterType="String">
+    SELECT hotplaceno, a, b, cnt, rdate, seqno, visible
+    FROM hotplace
+    WHERE a=#{a} AND b != '-' AND visible='Y'
+    ORDER BY seqno ASC
+  </select>
+
+  <!-- 관리자용 검색 목록, Map은 VO class보다 적은 변수의 전달시 사용 -->
+  <!-- SQL -> hotplaceVO -> ArrayList<HotplaceVO> return -->
+  <select id="list_search" resultType="dev.mvc.hotplace.HotplaceVO" parameterType="String">
+    SELECT hotplaceno, a, b, cnt, rdate, seqno, visible
+    FROM hotplace
+    
+    <if test="word != null and word != ''">
+      WHERE UPPER(nation) LIKE '%' || UPPER(#{word}) || '%' OR UPPER(b) LIKE '%' || UPPER(#{word}) || '%'  
+    </if>
+        
+    ORDER BY seqno ASC
+  </select>
+  
+ <!-- 관리자용 검색 목록, Map은 VO class보다 적은 변수의 전달시 사용 -->
+ <!-- SQL -> HotplaceVO -> ArrayList<HotplaceVO> return -->
+ <select id="list_search_paging" resultType="dev.mvc.hotplace.HotplaceVO" parameterType="Map">
+   SELECT hotplaceno, a, b, cnt, rdate, seqno, visible, r
+   FROM (
+       SELECT hotplaceno, a, b, cnt, rdate, seqno, visible, rownum as r
+       FROM (
+           SELECT hotplaceno, a, b, cnt, rdate, seqno, visible
+           FROM hotplace
+           
+           <if test="word != null and word != ''">
+             WHERE UPPER(a) LIKE '%' || UPPER(#{word}) || '%' OR UPPER(b) LIKE '%' || UPPER(#{word}) || '%'
+           </if>
+           
+           ORDER BY seqno ASC
+        )
+    )
+    WHERE r &gt; = #{start_num} AND r &lt; = #{end_num} <!-- WHERE r >= 1 AND r <= 3 -->
+ </select>
+ 
+ <!-- 검색된 레코드 수 -->
+  <select id="list_search_count" resultType="int" parameterType="String">
+    SELECT COUNT(*) as cnt
+    FROM hotplace
+    
+    <if test="word != null and word != ''">
+       WHERE UPPER(a) LIKE '%' || UPPER(#{word}) || '%' OR UPPER(b) LIKE '%' || UPPER(#{word}) || '%'
+    </if>
+    
+     ORDER BY seqno ASC
+  </select>
+  
+</mapper>
+
+
+
+
+
+
+
+
+
+
