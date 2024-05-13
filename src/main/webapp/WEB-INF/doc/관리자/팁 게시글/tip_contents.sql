@@ -36,4 +36,5 @@ CREATE SEQUENCE TIP_CONTENTS_SEQ
   CACHE 2                   -- 2번은 메모리에서만 계산
   NOCYCLE;                  -- 다시 1부터 생성되는 것을 방지
 
+commit;
 SELECT * FROM tip_contents;
