@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter @Setter
 public class contents_tagVO {
 	
-	private int contents_tag_no1;
+	private int contents_tag_no;
 	
 	private int scon_no;
 }
