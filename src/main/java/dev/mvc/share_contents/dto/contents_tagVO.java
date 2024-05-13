@@ -1,4 +1,4 @@
-package dev.mvc.contents_tag;
+package dev.mvc.share_contents.dto;
 
 import lombok.Getter;
 import lombok.Setter;

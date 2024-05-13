@@ -1,4 +1,4 @@
-package dev.mvc.share_contents;
+package dev.mvc.share_contents.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,6 +6,8 @@ import lombok.Setter;
 @Setter @Getter
 public class share_contentsVO {
 	private int scon_no;
+	
+	private int catno;
 	
 	private int pro_no;
 	
