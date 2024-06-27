@@ -32,6 +32,9 @@ public class ContentsTest {
     hashMap.put("passwd", "fS/kjO+fuEKk06Zl7VYMhg==");
     
     System.out.println("-> cnt: " + this.contentsProc.password_check(hashMap));
-    
+    // System.out.println(new java.util.Date().toLocaleString());
   }
 }
+
+
+

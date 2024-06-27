@@ -9,32 +9,32 @@
   </div>
   
   <aside class="aside_right" th:if="${session.grade == 'admin'}">
-    <a th:href="@{|/contents/create?cateno=${cateVO.cateno}|}">등록</a>
+    <a href="./create?cateno=${cateno }">등록</a>
     <span class='menu_divide' >│</span>
-    <a th:href="@{|/contents/update_text?contentsno=${contentsVO.contentsno}&now_page=${now_page}&word=${word}|}">글 수정</a>
+    <a th:href="@{|/contents/update_text?contentsno=${contentsVO.contentsno}&now_page=${now_page}&word=${word }|}">글 수정</a>
     <span class='menu_divide' >│</span>
-    <a th:href="@{|/contents/update_file?contentsno=${contentsVO.contentsno}&now_page=${now_page}&word=${word}|}">파일 수정</a>  
+    <a th:href="@{|./update_file?contentsno=${contentsVO.contentsno}&word=${word}&now_page=${now_page}|}">파일 수정</a>  
     <span class='menu_divide' >│</span>
-    <a th:href="@{|/contents/map?cateno=${contentsVO.cateno}&contentsno=${contentsVO.contentsno}&now_page=${now_page}&word=${word}|}">지도</a>
+    <a th:href="@{|/contents/map?cateno=${contentsVO.cateno }&contentsno=${contentsVO.contentsno}|}">지도</a>
     <span class='menu_divide' >│</span>
-    <a th:href="@{|/contents/youtube?cateno=${contentsVO.cateno}&contentsno=${contentsVO.contentsno}&now_page=${now_page}&word=${word}|}">Youtube</a>
+    <a th:href="@{|/contents/youtube?cateno=${contentsVO.cateno }&contentsno=${contentsVO.contentsno}&word=${word}&now_page=${now_page}|}">Youtube</a>
     <span class='menu_divide' >│</span>
-    <a th:href="@{|/contents/delete?contentsno=${contentsVO.contentsno}&word=${word}&now_page=${now_page}&cateno=${contentsVO.cateno}|}">삭제</a>  
+    <a th:href="@{|./delete?contentsno=${contentsVO.contentsno}&word=${word}&now_page=${now_page}&cateno=${contentsVO.cateno}|}">삭제</a>  
     <span class='menu_divide' >│</span>
 
     <a href="javascript:location.reload();">새로고침</a>
     <span class='menu_divide' >│</span>    
-    <a th:href="@{|./list_by_cateno?cateno=${cateVO.cateno}&word=${word}&now_page=${now_page}|}">목록형</a>    
+    <a th:href="@{|./list_by_cateno?cateno=${cateVO.cateno }&word=${word }&now_page=${now_page}|}">목록형</a>    
     <span class='menu_divide' >│</span>
-    <a th:href="@{|./list_by_cateno_grid?cateno=${cateVO.cateno}&word=${word}&now_page=${now_page}|}">갤러리형</a>
+    <a th:href="@{|./list_by_cateno_grid?cateno=${cateno }&word=${word }&now_page=${now_page}|}">갤러리형</a>
   </aside> 
 
   <aside class="aside_right" th:if="${session.grade != 'admin'}">
      <a href="javascript:location.reload();">새로고침</a>
     <span class='menu_divide' >│</span>    
-    <a th:href="@{|./list_by_cateno?cateno=${contentsVO.cateno }&word=${word}&now_page=${now_page}|}">목록형</a>    
+    <a th:href="@{|./list_by_cateno?cateno=${cateVO.cateno }&word=${word }&now_page=${now_page}|}">목록형</a>    
     <span class='menu_divide' >│</span>
-    <a th:href="@{|./list_by_cateno_grid?cateno=${cateVO.cateno}&word=${word}&now_page=${now_page}|}">갤러리형</a>
+    <a th:href="@{|./list_by_cateno_grid?cateno=${cateno }&word=${word }&now_page=${now_page}|}">갤러리형</a>
   </aside> 
  
   <div class='menu_line'></div>
@@ -49,7 +49,7 @@
           </div>
 
           <span style="font-size: 1.5em; font-weight: bold;" th:text="${contentsVO.title}"></span>
-          <span style="font-size: 1em;" th:text="${contentsVO.rdate}"></span><br><br>
+          <span style="font-size: 1em;" th:text="${contentsVO.rdate }"></span><br><br>
           <div style="white-space: pre-wrap;"><span th:text="${contentsVO.content}"></span></div>
         </div>
       </li>
@@ -64,7 +64,7 @@
       <li class="li_none" style="clear: both; padding-top: 10px; padding-bottom: 25px;" 
            th:if="${contentsVO.map.length() > 0}">
         <div style='text-align: center; width:640px; margin: 0px auto;'
-                th:utext = "${contentsVO.map}">
+                th:utext = "${contentsVO.map }">
         </div>
       </li>
       

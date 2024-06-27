@@ -68,6 +68,12 @@ public class MemberCont {
     return "member/create";    // /template/member/create.html
   }
   
+  /**
+   * 회원 가입 처리
+   * @param model
+   * @param memberVO
+   * @return
+   */
   @PostMapping(value="/create")
   public String create_proc(Model model, MemberVO memberVO) {
     int checkID_cnt = this.memberProc.checkID(memberVO.getId());
@@ -118,7 +124,6 @@ public class MemberCont {
    */
   @GetMapping(value="/read")
   public String read(HttpSession session, Model model, int memberno) {
-    
     // 회원은 회원 등급만 처리, 관리자: 1 ~ 10, 사용자: 11 ~ 20
     // int gradeno = this.memberProc.read(memberno).getGrade(); // 등급 번호
     String grade = (String)session.getAttribute("grade"); // 등급: admin, member, guest
@@ -270,7 +275,6 @@ public class MemberCont {
    */
   @GetMapping(value="/login")
   public String login_form(Model model, HttpServletRequest request) {
-    
     // Cookie 관련 코드---------------------------------------------------------
     Cookie[] cookies = request.getCookies();
     Cookie cookie = null;
@@ -337,6 +341,10 @@ public class MemberCont {
                                      @RequestParam(value="id_save", defaultValue = "") String id_save,
                                      @RequestParam(value="passwd_save", defaultValue = "") String passwd_save
                                      ) {
+    
+    String ip = request.getRemoteAddr(); // IP
+    System.out.println("-> 접속 IP: " + ip);
+    
     HashMap<String, Object> map = new HashMap<String, Object>();
     map.put("id", id);
     // map.put("passwd", new Security().aesEncode(passwd));
@@ -554,6 +562,7 @@ public class MemberCont {
       if (cnt == 0) { // 현재 패스워드 불일치
         model.addAttribute("code", "passwd_not_equal");
         model.addAttribute("cnt", 0);
+        
       } else { // 현재 패스워드 일치
         HashMap<String, Object> map_new_passwd = new HashMap<String, Object>();
         map_new_passwd.put("memberno", memberno);

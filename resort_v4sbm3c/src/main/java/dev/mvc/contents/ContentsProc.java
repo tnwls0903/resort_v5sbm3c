@@ -12,19 +12,20 @@ import dev.mvc.tool.Tool;
 
 @Component("dev.mvc.contents.ContentsProc")
 public class ContentsProc implements ContentsProcInter {
-  @Autowired // ContentsDAOInter interface를 구현한 클래스의 객체를 만들어 자동으로 할당해라.
-  private ContentsDAOInter contentsDAO;
-  
   @Autowired
   Security security;
+  
+  @Autowired // ContentsDAOInter interface를 구현한 클래스의 객체를 만들어 자동으로 할당해라.
+  private ContentsDAOInter contentsDAO;
 
   @Override // 추상 메소드를 구현했음.
   public int create(ContentsVO contentsVO) {
-//  -----------------------------------------------
+    // -------------------------------------------------------------------
     String passwd = contentsVO.getPasswd();
     String passwd_encoded = this.security.aesEncode(passwd);
     contentsVO.setPasswd(passwd_encoded);
-//  ----------------------------------------------- 
+    // -------------------------------------------------------------------
+    
     int cnt = this.contentsDAO.create(contentsVO);
     return cnt;
   }
@@ -153,7 +154,7 @@ public class ContentsProc implements ContentsProcInter {
   /**
    * SPAN태그를 이용한 박스 모델의 지원, 1 페이지부터 시작 현재 페이지: 11 / 22 [이전] 11 12 13 14 15 16 17
    * 18 19 20 [다음]
-   * @param cateno        카테고리 번호
+   * 
    * @param now_page        현재 페이지
    * @param word            검색어
    * @param list_file       목록 파일명
@@ -216,9 +217,9 @@ public class ContentsProc implements ContentsProcInter {
     // now_grp: 3 (21 ~ 30 page)
     // 현재 2그룹일 경우: (2 - 1) * 10 = 1그룹의 마지막 페이지 10
     // 현재 3그룹일 경우: (3 - 1) * 10 = 2그룹의 마지막 페이지 20
-    int _now_page = (now_grp - 1) * Contents.PAGE_PER_BLOCK;
+    int _now_page = (now_grp - 1) * page_per_block;
     if (now_grp >= 2) { // 현재 그룹번호가 2이상이면 페이지수가 11페이지 이상임으로 이전 그룹으로 갈수 있는 링크 생성
-      str.append("<span class='span_box_1'><A href='" + list_file + "?cateno=" + cateno + "&word=" + word + "&now_page=" + _now_page
+      str.append("<span class='span_box_1'><A href='" + list_file + "?cateno="+cateno+"&word=" + word + "&now_page=" + _now_page
           + "'>이전</A></span>");
     }
 
@@ -232,7 +233,7 @@ public class ContentsProc implements ContentsProcInter {
         str.append("<span class='span_box_2'>" + i + "</span>"); // 현재 페이지, 강조
       } else {
         // 현재 페이지가 아닌 페이지는 이동이 가능하도록 링크를 설정
-        str.append("<span class='span_box_1'><A href='" + list_file + "?cateno=" + cateno + "&word=" + word + "&now_page=" + i + "'>" + i
+        str.append("<span class='span_box_1'><A href='" + list_file + "?cateno="+cateno+"&word=" + word + "&now_page=" + i + "'>" + i
             + "</A></span>");
       }
     }
@@ -242,9 +243,9 @@ public class ContentsProc implements ContentsProcInter {
     // 현재 페이지 5일경우 -> 현재 1그룹: (1 * 10) + 1 = 2그룹의 시작페이지 11
     // 현재 페이지 15일경우 -> 현재 2그룹: (2 * 10) + 1 = 3그룹의 시작페이지 21
     // 현재 페이지 25일경우 -> 현재 3그룹: (3 * 10) + 1 = 4그룹의 시작페이지 31
-    _now_page = (now_grp * Contents.PAGE_PER_BLOCK) + 1; // 최대 페이지수 + 1
+    _now_page = (now_grp * page_per_block) + 1; // 최대 페이지수 + 1
     if (now_grp < total_grp) {
-      str.append("<span class='span_box_1'><A href='" + list_file +  "?word=" + word + "&now_page=" + _now_page
+      str.append("<span class='span_box_1'><A href='" + list_file + "?cateno="+cateno+"&word=" + word + "&now_page=" + _now_page
           + "'>다음</A></span>");
     }
     str.append("</DIV>");
